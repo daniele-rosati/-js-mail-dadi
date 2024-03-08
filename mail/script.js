@@ -1,5 +1,5 @@
 // Lista di email consentite
-var listaEmailConsentite = ["esempio1@email.com", "esempio2@email.com", "esempio3@email.com"];
+const listaEmailConsentite = ["esempio1@email.com", "esempio2@email.com", "esempio3@email.com"];
 
 // Funzione per controllare se l'email è nella lista consentita
 function controllaAccesso(email) {
@@ -11,7 +11,7 @@ function controllaAccesso(email) {
 }
 
 // Chiedi all'utente la sua email
-var emailUtente = prompt("Inserisci la tua email:");
+const emailUtente = prompt("Inserisci la tua email:");
 
 // Controlla se l'email è nella lista consentita e stampa un messaggio appropriato
 if (controllaAccesso(emailUtente)) {
