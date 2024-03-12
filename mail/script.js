@@ -10,6 +10,7 @@ function controllaAccesso(email) {
     }
 }
 
+
 // Chiedi all'utente la sua email
 const emailUtente = prompt("Inserisci la tua email:");
 
