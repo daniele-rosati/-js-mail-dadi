@@ -1,26 +1,30 @@
-function lancioDado() {
-    return Math.floor(Math.random() * 6) + 1;
-}
 
-function determinaVincitore(punteggioGiocatore, punteggioComputer) {
-    if (punteggioGiocatore > punteggioComputer) {
-        return "Giocatore";
-    } else if (punteggioComputer > punteggioGiocatore) {
-        return "Computer";
+  // Funzione per generare un numero casuale tra min e max inclusi
+  const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+  // Funzione per giocare
+  const playGame = () => {
+    // Genera un numero casuale per il giocatore e per il computer
+    const playerScore = getRandomNumber(1, 6);
+    const computerScore = getRandomNumber(1, 6);
+
+    // Determina il vincitore
+    let winner;
+    if (playerScore > computerScore) {
+      winner = "Giocatore";
+    } else if (playerScore < computerScore) {
+      winner = "Computer";
     } else {
-        return "Pareggio";
+      winner = "Nessun vincitore, pareggio";
     }
-}
 
-function gioca() {
-    const dadoGiocatore = lancioDado();
-    const dadoComputer = lancioDado();
+    // Mostra il risultato in pagina
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = `
+      <h2>Risultato:</h2>
+      <p>Il giocatore ha ottenuto: ${playerScore}</p>
+      <p>Il computer ha ottenuto: ${computerScore}</p>
+      <p>Vincitore: ${winner}</p>
+    `;
+  };
 
-    console.log("Il giocatore ha ottenuto: " + dadoGiocatore);
-    console.log("Il computer ha ottenuto: " + dadoComputer);
-
-    const vincitore = determinaVincitore(dadoGiocatore, dadoComputer);
-    console.log("Il vincitore è: " + vincitore);
-}
-
-gioca();
