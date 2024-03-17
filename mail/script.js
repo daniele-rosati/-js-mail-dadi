@@ -1,22 +1,27 @@
-// Lista di email consentite
-const listaEmailConsentite = ["esempio1@email.com", "esempio2@email.com", "esempio3@email.com"];
 
-// Funzione per controllare se l'email è nella lista consentita
-function controllaAccesso(email) {
-    if (listaEmailConsentite.includes(email)) {
-        return true;
-    } else {
-        return false;
+  // Array delle email autorizzate
+  const allowedEmails = ["esempio1@example.com", "esempio2@example.com", "esempio3@example.com"];
+
+  // Funzione per controllare l'email inserita dall'utente
+  const checkEmail = () => {
+    // Ottieni l'email inserita dall'utente
+    const userEmail = document.getElementById('emailInput').value.trim();
+
+    // Verifica se l'email è nella lista di chi può accedere
+    let isAllowed = false;
+    for (let i = 0; i < allowedEmails.length; i++) {
+      if (allowedEmails[i] === userEmail) {
+        isAllowed = true;
+        break;
+      }
     }
-}
 
+    // Mostra il risultato del controllo in pagina
+    const resultDiv = document.getElementById('result');
+    if (isAllowed) {
+      resultDiv.textContent = "Accesso consentito. Benvenuto!";
+    } else {
+      resultDiv.textContent = "Accesso negato. La tua email non è autorizzata.";
+    }
+  };
 
-// Chiedi all'utente la sua email
-const emailUtente = prompt("Inserisci la tua email:");
-
-// Controlla se l'email è nella lista consentita e stampa un messaggio appropriato
-if (controllaAccesso(emailUtente)) {
-    console.log("Accesso consentito. Benvenuto!");
-} else {
-    console.log("Accesso negato. La tua email non è autorizzata.");
-}
